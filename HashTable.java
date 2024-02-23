@@ -1,8 +1,8 @@
-import java.net.InetSocketAddress;
 import java.util.LinkedList;
 
 public class HashTable {
     private int size = 5;
+    @SuppressWarnings("unchecked")
     private LinkedList<Entry>[] entries = new LinkedList[size];
 
     private class Entry {

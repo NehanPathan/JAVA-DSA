@@ -52,7 +52,6 @@ public class Graph {
                 System.out.println(source + " is connected with " + targets);
         }
     }
-
     public void removeNode(String label) {
 
         var node = nodes.get(label);
@@ -80,5 +79,6 @@ public class Graph {
 
         adjacencyList.get(fromNode).remove(toNode);
     }
+
 
 }
