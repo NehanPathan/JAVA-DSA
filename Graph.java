@@ -11,9 +11,10 @@ public class Graph {
         public Node(String label) {
             this.label = label;
         }
+
         @Override
-        public String toString(){
-            return  label;
+        public String toString() {
+            return label;
         }
 
     }
@@ -50,6 +51,34 @@ public class Graph {
             if (!targets.isEmpty())
                 System.out.println(source + " is connected with " + targets);
         }
+    }
+
+    public void removeNode(String label) {
+
+        var node = nodes.get(label);
+
+        if (node == null)
+            return;
+
+        nodes.remove(label);
+        adjacencyList.remove(node);
+
+        for (var source : adjacencyList.keySet())
+            adjacencyList.get(source).remove(node);
+
+        adjacencyList.remove(node);
+        nodes.remove(label);
+
+    }
+
+    public void removeEdge(String from, String to) {
+
+        var fromNode = nodes.get(from);
+        var toNode = nodes.get(to);
+        if (fromNode == null || toNode == null)
+            return;
+
+        adjacencyList.get(fromNode).remove(toNode);
     }
 
 }

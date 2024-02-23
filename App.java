@@ -1,17 +1,22 @@
 
 public class App {
     public static void main(String[] args) throws Exception {
-     var trie = new Trie();
+     var garph = new Graph();
 
-     trie.insert("care");
-     trie.insert("car");
-     trie.insert("card");
-     trie.insert("carefull");
+        garph.addNode("a");
+        garph.addNode("b");
+        garph.addNode("c");
+        garph.addNode("d");
 
-     var words = trie.findWords("carg");
+        garph.addEdge("a", "b");
+        garph.addEdge("b", "c");
+        garph.addEdge("c", "d");
+        garph.addEdge("d", "b");
 
-     System.out.println(words);
 
+    garph.removeNode("c");
+
+    garph.print();
 
 
     }
