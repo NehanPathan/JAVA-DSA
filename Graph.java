@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.Stack;
 
 public class Graph {
 
@@ -52,6 +55,7 @@ public class Graph {
                 System.out.println(source + " is connected with " + targets);
         }
     }
+
     public void removeNode(String label) {
 
         var node = nodes.get(label);
@@ -80,5 +84,63 @@ public class Graph {
         adjacencyList.get(fromNode).remove(toNode);
     }
 
+    //Donot write name with implementation type ie recursively/iteratively (Here we write only for understanding)
+    public void traverseDepthFirstRecursively(String root) {
+        var node = nodes.get(root);
+        if (node == null)
+            return;
+
+        traverseDepthFirst(node, new HashSet<>());
+    }
+
+    private void traverseDepthFirst(Node root, Set<Node> visited) {
+        System.out.println(root);
+        visited.add(root);
+
+        for (var neighbourNode : adjacencyList.get(root)) {
+            if (!visited.contains(neighbourNode))
+                traverseDepthFirst(neighbourNode, visited);
+
+        }
+
+    }
+
+    public void traverseDepthFirstIteratively(String root) {
+        var node = nodes.get(root);
+        if (node == null)
+            return;
+
+        Set<Node> visited = new HashSet<>();
+        Stack<Node> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.empty()) {
+            // mosh way
+            var current = stack.pop();
+            if (visited.contains(current))
+                continue;
+
+            System.out.println(current);
+            visited.add(current);
+            for (var neighbour : adjacencyList.get(current)) {
+                if (!visited.contains(neighbour)) {
+                    stack.push(neighbour);
+                }
+            }
+
+            // my way -> //not applicable in circular
+            // var current = stack.pop();
+            
+            // System.out.println(current);
+        
+            // for (var neighbour : adjacencyList.get(current)) {
+            //     if (!visited.contains(neighbour)) {
+            //         stack.push(neighbour);
+            //          visited.add(neighbour);
+            //     }
+            // }
+        }
+
+    }
 
 }

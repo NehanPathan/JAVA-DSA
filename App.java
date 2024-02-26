@@ -9,14 +9,15 @@ public class App {
         garph.addNode("d");
 
         garph.addEdge("a", "b");
-        garph.addEdge("b", "c");
-        garph.addEdge("c", "d");
-        garph.addEdge("d", "b");
+        garph.addEdge("b", "d");
+        garph.addEdge("d", "c");
+        garph.addEdge("a", "c");    
 
 
-    garph.removeNode("c");
 
-    garph.print();
+
+    // garph.traverseDepthFirstRecursively("a");
+    garph.traverseDepthFirstIteratively("a");
 
 
     }
