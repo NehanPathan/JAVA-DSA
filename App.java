@@ -1,24 +1,23 @@
 
 public class App {
     public static void main(String[] args) throws Exception {
-     var garph = new Graph();
+        var garph = new Graph();
 
+        garph.addNode("x");
         garph.addNode("a");
         garph.addNode("b");
-        garph.addNode("c");
         garph.addNode("d");
+        garph.addNode("e");
+        garph.addNode("p");
 
-        garph.addEdge("a", "b");
-        garph.addEdge("b", "d");
-        garph.addEdge("d", "c");
-        garph.addEdge("a", "c");    
+        garph.addEdge("x", "a");
+        garph.addEdge("x", "b");
+        garph.addEdge("a", "d");
+        garph.addEdge("b", "e");
+        garph.addEdge("d", "p");
+        garph.addEdge("e", "p");
 
-
-
-
-    // garph.traverseDepthFirstRecursively("a");
-    garph.traverseDepthFirstIteratively("a");
-
+        System.out.println(garph.topologicalSort("x"));
 
     }
 }

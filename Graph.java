@@ -1,10 +1,15 @@
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
+
+import javax.management.Query;
 
 public class Graph {
 
@@ -84,7 +89,8 @@ public class Graph {
         adjacencyList.get(fromNode).remove(toNode);
     }
 
-    //Donot write name with implementation type ie recursively/iteratively (Here we write only for understanding)
+    // Donot write name with implementation type ie recursively/iteratively (Here we
+    // write only for understanding)
     public void traverseDepthFirstRecursively(String root) {
         var node = nodes.get(root);
         if (node == null)
@@ -130,16 +136,75 @@ public class Graph {
 
             // my way -> //not applicable in circular
             // var current = stack.pop();
-            
+
             // System.out.println(current);
-        
+
             // for (var neighbour : adjacencyList.get(current)) {
-            //     if (!visited.contains(neighbour)) {
-            //         stack.push(neighbour);
-            //          visited.add(neighbour);
-            //     }
+            // if (!visited.contains(neighbour)) {
+            // stack.push(neighbour);
+            // visited.add(neighbour);
+            // }
             // }
         }
+
+    }
+
+    public void traverseBreadthFirst(String root) {
+        var node = nodes.get(root);
+
+        if (node == null)
+            return;
+
+        Set<Node> visited = new HashSet<>();
+        Queue<Node> queue = new ArrayDeque<>();
+        queue.add(node);
+
+        while (!queue.isEmpty()) {
+            var current = queue.remove();
+            if (visited.contains(current))
+                continue;
+
+            System.out.println(current);
+            visited.add(current);
+
+            for (var neighbour : adjacencyList.get(current)) {
+                if (!visited.contains(neighbour))
+                    queue.add(neighbour);
+            }
+        }
+    }
+
+    public List<String> topologicalSort(String root) {
+        var node = nodes.get(root);
+
+        if (node == null)
+            throw new IllegalArgumentException();
+
+        Stack<Node> stack = new Stack<>();
+        Set<Node> visited = new HashSet<>();
+
+        
+         topologicalSort(node, visited, stack);
+    
+
+        List<String> sortedList = new ArrayList<>();
+        while (!stack.empty())
+            sortedList.add(stack.pop().label);
+
+        return sortedList;
+
+    }
+
+    private void topologicalSort(Node root, Set<Node> visited, Stack<Node> stack) {
+        if (visited.contains(root))
+            return;
+
+        visited.add(root);
+
+        for (var neighbourNode : adjacencyList.get(root))
+            topologicalSort(neighbourNode, visited, stack);
+
+        stack.push(root);
 
     }
 
