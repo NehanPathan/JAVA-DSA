@@ -1,15 +1,17 @@
-
 public class App {
     public static void main(String[] args) throws Exception {
-        var garph = new WeightedGraph();
+        var graph = new WeightedGraph();
 
-        garph.addNode("a");
-        garph.addNode("b");
-        garph.addNode("c");
+        graph.addNode("a");
+        graph.addNode("b");
+        graph.addNode("c");
 
-        garph.addEdge("a", "b", 3);
-        garph.addEdge("a", "c", 2);
+        graph.addEdge("a", "b", 1);
+        graph.addEdge("b", "c", 2);
+        graph.addEdge("a", "c", 10);
 
-        garph.print();
+        var path = graph.getShortestPath("a", "c");
+
+        System.out.println(path);
     }
 }
