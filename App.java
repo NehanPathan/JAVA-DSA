@@ -6,12 +6,10 @@ public class App {
         graph.addNode("b");
         graph.addNode("c");
 
-        graph.addEdge("a", "b", 1);
-        graph.addEdge("b", "c", 2);
-        graph.addEdge("a", "c", 10);
+        graph.addEdge("a", "b", 0);
+        graph.addEdge("b", "c", 0);
+        // graph.addEdge("a", "c", 0);
 
-        var path = graph.getShortestPath("a", "c");
-
-        System.out.println(path);
+        System.out.println(graph.hasCycle());
     }
 }
