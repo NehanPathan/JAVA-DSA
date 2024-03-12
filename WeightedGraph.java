@@ -185,9 +185,6 @@ public class WeightedGraph {
     public WeightedGraph getMinimumSpanningTree() {
         var tree = new WeightedGraph();
 
-        if (nodes.isEmpty())
-            return tree;
-
         PriorityQueue<Edge> edgesQueue = new PriorityQueue<>(
                 Comparator.comparingInt(e -> e.weight));
         var startNode = nodes.values().iterator().next();
