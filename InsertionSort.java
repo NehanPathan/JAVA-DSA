@@ -1,8 +1,8 @@
 public class InsertionSort {
     public void sort(int[] array) {
         for (int i = 1; i < array.length; i++) {
-            int current = array[i];
-            int j = i - 1;
+            var current = array[i];
+            var j = i - 1;
 
             // Shift elements greater than current to the right
             while (j >= 0 && array[j] > current) {
