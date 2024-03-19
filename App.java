@@ -2,12 +2,13 @@ import java.util.Arrays;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        int[] numbers = { 4, 3, 5, 2, 1 };
+        int[] numbers = { 1, 4, 7, 9, 10 };
+        var search = new Search();
 
-        var bucketSort = new BucketSort();
+        // var index = search.linearSearch(numbers, 10);
 
-        bucketSort.sort(numbers, 3);
-
-        System.out.println(Arrays.toString(numbers));
+        var index = search.binarySearchIteretive(numbers, 11); // work for sorted array
+        System.out.println(index);
     }
+
 }
