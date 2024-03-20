@@ -15,7 +15,9 @@ public class App {
         // var index = search.ternarySearch(numbers, 4); it is less efficient then
         // binarySearch
 
-        var index = search.jumpSearch(numbers, 10);
+        // var index = search.jumpSearch(numbers, 10);
+
+        var index = search.exponentialSearch(numbers, 10);
 
         System.out.println(index);
     }
