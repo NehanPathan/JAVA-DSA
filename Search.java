@@ -80,4 +80,26 @@ public class Search {
 
     }
 
+    public int jumpSearch(int[] array, int target) {
+        int blockSize = (int) Math.sqrt(array.length);
+        var start = 0;
+        var next = blockSize;
+
+        while (start < array.length && array[next - 1] < target) {
+
+            start = next;
+            next += blockSize;
+
+            if (next > array.length)
+                next = array.length;
+
+        }
+
+        for (var i = start; i < next; i++)
+            if (array[i] == target)
+                return i;
+
+        return -1;
+    }
+
 }
