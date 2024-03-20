@@ -7,7 +7,13 @@ public class App {
 
         // var index = search.linearSearch(numbers, 10);
 
-        var index = search.binarySearchIteretive(numbers, 11); // work for sorted array
+        // var index = search.binarySearchRec(numbers, 10); work for sorted
+        // array(recursive Method)
+
+        // var index = search.binarySearch(numbers, 4); (Iterative Method)
+
+        var index = search.ternarySearch(numbers, 4); // it is less efficient then binarySearch
+
         System.out.println(index);
     }
 

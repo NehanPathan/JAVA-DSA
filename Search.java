@@ -32,7 +32,7 @@ public class Search {
 
     }
 
-    public int binarySearchIteretive(int[] array, int target) {
+    public int binarySearch(int[] array, int target) {
         var left = 0;
         var right = array.length - 1;
 
@@ -44,11 +44,40 @@ public class Search {
 
             if (target < array[middle])
                 right = middle - 1;
-            if (target > array[middle])
+            else
                 left = middle + 1;
 
         }
         return -1;
+    }
+
+    public int ternarySearch(int[] array, int target) {
+        return ternarySearch(array, target, 0, array.length - 1);
+    }
+
+    private int ternarySearch(int[] array, int target, int left, int right) {
+
+        if (left > right)
+            return -1;
+
+        var partitionSize = (right - left) / 3;
+        var mid1 = left + partitionSize;
+        var mid2 = right - partitionSize;
+
+        if (array[mid2] == target)
+            return mid2;
+
+        if (array[mid1] == target)
+            return mid1;
+
+        if (target < array[mid2])
+            return ternarySearch(array, target, left, mid1 - 1);
+
+        if (target > array[mid2])
+            return ternarySearch(array, target, mid2 + 1, right);
+
+        return ternarySearch(array, target, mid1 + 1, mid2 - 1);
+
     }
 
 }
