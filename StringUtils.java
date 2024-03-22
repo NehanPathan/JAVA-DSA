@@ -1,3 +1,6 @@
+
+import java.util.Stack;
+
 public class StringUtils {
     public static int countVowels(String str) {
         if (str == null)
@@ -13,4 +16,21 @@ public class StringUtils {
         return count;
 
     }
+
+    public static String reverse(String str) {
+        if (str == null)
+            return "";
+        // Stack<Character> stack = new Stack<>(); one way
+        // another way where we use StringBuilder and So that easily append new ch in
+        // string and loop from endIndex
+
+        StringBuilder reversed = new StringBuilder();
+
+        for (var i = str.length() - 1; i >= 0; i--)
+            reversed.append(str.charAt(i));
+
+        return reversed.toString();
+
+    }
+
 }
