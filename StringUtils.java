@@ -37,10 +37,13 @@ public class StringUtils {
 
     }
 
-    public static String reverseWord(String sentence) {
+    public static String reverseWords(String sentence) {
         if (sentence == null)
             return "";
         String[] words = sentence.split(" ");
+
+        //-----------------------------
+
         // StringJoiner reversed = new StringJoiner(" "); // use StringJoiner to join
         // String Array with Space/any delimiter
 
@@ -49,7 +52,8 @@ public class StringUtils {
 
         // return reversed.toString();
 
-        // another way, we can use Collection
+        //----------------------------------
+        // another way, we can use Collection inbuilt reverse method
         Collections.reverse(Arrays.asList(words));
         return String.join(" ", words);
     }
