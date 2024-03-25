@@ -40,9 +40,9 @@ public class StringUtils {
     public static String reverseWords(String sentence) {
         if (sentence == null)
             return "";
-        String[] words = sentence.split(" ");
+        String[] words = sentence.trim().split(" "); // add trim to remove extra white space around string
 
-        //-----------------------------
+        // -----------------------------
 
         // StringJoiner reversed = new StringJoiner(" "); // use StringJoiner to join
         // String Array with Space/any delimiter
@@ -52,10 +52,17 @@ public class StringUtils {
 
         // return reversed.toString();
 
-        //----------------------------------
+        // ----------------------------------
         // another way, we can use Collection inbuilt reverse method
         Collections.reverse(Arrays.asList(words));
         return String.join(" ", words);
+    }
+
+    public static boolean areRotations(String str1, String str2) {
+        if (str1 == null || str2 == null)
+            return false;
+        return (str1.length() == str2.length() && (str1 + str1).contains(str2));
+        // above concatenation is good for small strings
     }
 
 }
