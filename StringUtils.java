@@ -2,6 +2,8 @@
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Stack;
 import java.util.StringJoiner;
 
@@ -63,6 +65,23 @@ public class StringUtils {
             return false;
         return (str1.length() == str2.length() && (str1 + str1).contains(str2));
         // above concatenation is good for small strings
+    }
+
+    public static String removeDuplicates(String str) {
+        if (str == null)
+            return "";
+
+        StringBuilder output = new StringBuilder();
+        Set<Character> seen = new HashSet<>();
+
+        for (var ch : str.toCharArray()) {
+            if (!seen.contains(ch)) {
+                seen.add(ch);
+                output.append(ch);
+            }
+        }
+        return output.toString();
+
     }
 
 }
